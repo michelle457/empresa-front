@@ -4,7 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>shelly acessorios</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lexend', sans-serif;
+
+    background-image: url("my-melody2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+form {
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 300px;
+
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+form label {
+    color: #e91e63;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffc0cb;
+    color: #000;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #d81b60;
+}
+</style>
+
+
 </head>
 <body>
 <?php
@@ -41,7 +108,7 @@ if (!empty($dados["Sendlogin"])) {
     if ($resultado->num_rows == 1) {
         // Usuário encontrado, verificar senha
         $row_usuario = $resultado->fetch_assoc();
-        if (md5($dados["senha_usuario"], $row_usuario['senha'])) {
+        if (md5($dados["senha"], $row_usuario['senha'])) {
             // Senha correta - iniciar sessão e redirecionar
             session_start();
             $_SESSION['id'] = $row_usuario['id'];
